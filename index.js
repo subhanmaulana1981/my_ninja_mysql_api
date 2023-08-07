@@ -13,9 +13,9 @@ app.listen(port, () => {
 });
 
 /* middleware(s) */
-var corsOption = {
+/* var corsOption = {
     origin: "http://127.0.0.1:5000"
-}
+} */
 app.use(cors(corsOption));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
