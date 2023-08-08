@@ -6,7 +6,7 @@ const routes = require("./routes/api");
 
 /* application */
 const app = express();
-const port = 5000;
+const port = 5135;
 /* listener */
 app.listen(port, () => {
     console.log(`kami mendengarkan di port ${port}`);
