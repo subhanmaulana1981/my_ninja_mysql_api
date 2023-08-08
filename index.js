@@ -20,13 +20,12 @@ app.use(cors(corsOption));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use("/api", routes);
-app.use(function (err, req, res, next) {
+/* app.use(function (err, req, res, next) {
     console.log(err);
     res.status(422).send({ error: err.message });
-});
+}); */
 
 // http get starting point
 app.get("/api", function (req, res) {
     res.send("Subhan Maulana made for CDC Global Informatika August 2023");
-
 });
