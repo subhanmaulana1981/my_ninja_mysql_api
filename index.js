@@ -13,10 +13,20 @@ app.listen(port, () => {
 });
 
 /* middleware(s) */
-var corsOption = {
+
+// cors server
+/* var corsOption = {
     origin: "http://207.148.122.70:5135"
+} */
+// app.use(cors(corsOption));
+
+// cors lokal
+var corsOption = {
+    origin: "http://127.0.0.1:5135"
 }
 app.use(cors(corsOption));
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use("/api", routes);
