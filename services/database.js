@@ -12,6 +12,6 @@ async function forwardViaSSH() {
 }
 
 forwardViaSSH();
-const koneksiViaSSH = mysql.createConnection(config.dbServer);
 
-module.exports = koneksiViaSSH;
+const koneksiViaSSH = mysql.createConnection(config.dbServer);
+module.exports = { koneksiViaSSH };
