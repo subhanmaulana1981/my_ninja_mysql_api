@@ -9,6 +9,7 @@ const { typeDefs } = require("./schema/type-defs");
 const { resolvers } = require("./schema/resolvers");
 
 const http = require("http");
+const { hostname } = require("os");
 
 /* application */
 const app = express();
@@ -31,12 +32,12 @@ const server = new ApolloServer({
 var corsOption = {
     origin: "http://207.148.122.70:5135"
 }
-// app.use(cors(corsOption));
 
 // cors lokal
 /* var corsOption = {
     origin: "http://127.0.0.1:5135"
 } */
+
 app.use(cors(corsOption));
 app.use(urlencoded({ extended: true }));
 app.use(json());
@@ -46,11 +47,10 @@ app.use("/api", routes);
 async function startApolloServer () {
     await server.start();
     server.applyMiddleware({ app });
-    // app.use("/api", graphqlHTTP());
     await new Promise((resolve) => {
-        httpServer.listen({ port }, resolve);
+        httpServer.listen({ port, hostname }, resolve);
+        console.log(`server graphQL running at ${hostname}:${port}`);
     });
-    console.log(`server graphql ready di port ${port}${server.graphqlPath}`);
 
     return { server, app }
 }
