@@ -1,9 +1,7 @@
 /* module(s) needed */
-const mysql = require("mysql");
 const express = require("express");
 const router = express.Router();
-const koneksiViaSSH = require("../services/database");
-const { json } = require("body-parser");
+const { koneksiViaSSH } = require("../services/database");
 
 /* routing */
 // get a list of ninjas

@@ -10,7 +10,6 @@ async function forwardViaSSH() {
         "3306:127.0.0.1:3306"
     );
 }
-
 forwardViaSSH();
 
 const koneksiViaSSH = mysql.createConnection(config.dbServer);
