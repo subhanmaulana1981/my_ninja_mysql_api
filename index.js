@@ -2,6 +2,7 @@ const express = require("express");
 const { urlencoded, json } = require("body-parser");
 const cors = require("cors");
 const routes = require("./routes/api");
+const { dbServer } = require("./config");
 
 const { ApolloServer } = require("apollo-server-express");
 const { ApolloServerPluginDrainHttpServer, ApolloServerPluginLandingPageLocalDefault } = require("apollo-server-core");
@@ -10,6 +11,18 @@ const { resolvers } = require("./schema/resolvers");
 
 const http = require("http");
 const { hostname } = require("os");
+
+/* sequelize */
+/* const Sequelize = require("sequelize");
+const sequelize = new Sequelize(
+    dbServer.database,
+    dbServer.user,
+    dbServer.password,
+    {
+        host: dbServer.host,
+        dialect: "mysql"
+    }
+); */
 
 /* application */
 const app = express();
@@ -55,6 +68,16 @@ async function startApolloServer () {
     return { server, app }
 }
 startApolloServer();
+
+// sequelize service(s)
+/* sequelize
+    .authenticate()
+    .then(() => {
+        console.log("connection has been established successfully");
+    })
+    .catch((error) => {
+        console.error("unable to connect to the database", error);
+    }); */
 
 // http get starting point
 app.get("/api", function (req, res) {
